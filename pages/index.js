@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { withSentry } from '@sentry/nextjs';
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://nextjs.org">Next.js!</a> xixi
         </h1>
 
         <p className="description">
@@ -47,6 +48,27 @@ export default function Home() {
           </a>
         </div>
       </main>
+
+      <button type="button" onClick={() => {
+        console.log('button1')
+      }}>
+        button1
+      </button>
+      <button type="button" onClick={() => {
+        console.log('button2')
+      }}>
+        button2
+      </button>
+      <button type="button" onClick={() => {
+        console.log('button3')
+      }}>
+        button3
+      </button>
+      <button type="button" onClick={() => {
+        throw new Error("Sentry Frontend Error");
+      }}>
+        Throw error
+      </button>
 
       <footer>
         <a
@@ -207,3 +229,5 @@ export default function Home() {
     </div>
   )
 }
+
+//export default withSentry(Home)
